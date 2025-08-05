@@ -19,6 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Backend is running successfully!")
+
+urlpatterns = [
+    path('', home),  # <- esta línea
+    path('api/', include('projects.urls')),
+    ...
+]
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('projects.urls')),  # Rutas de tu app
