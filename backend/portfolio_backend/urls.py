@@ -1,4 +1,4 @@
-"""
+""" from backend/portfolio_backend
 URL configuration for portfolio_backend project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -28,7 +28,6 @@ def health_check(request):
     return HttpResponse("OK")
 
 urlpatterns = [
-    path('', health_check),  # <- esta línea
     path('api/', include('projects.urls')),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name="index.html")),
