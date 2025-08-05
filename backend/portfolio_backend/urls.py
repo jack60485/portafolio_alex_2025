@@ -21,17 +21,17 @@ from django.conf.urls.static import static
 
 from django.http import HttpResponse
 
-def home(request):
-    return HttpResponse("Backend is running successfully!")
+'''def home(request):
+    return HttpResponse("Backend is running successfully!")'''
+
+def health_check(request):
+    return HttpResponse("OK")
 
 urlpatterns = [
-    path('', home),  # <- esta línea
+    path('', health_check),  # <- esta línea
     path('api/', include('projects.urls')),
-    ...
-]
-urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('projects.urls')),  # Rutas de tu app
+
 
 ]
 
