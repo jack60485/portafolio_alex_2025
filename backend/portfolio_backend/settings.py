@@ -30,11 +30,14 @@ SECRET_KEY = 'django-insecure-n8^t&*p!b*_$c$&57$43(vlnvg5e$=bucc-vc*z-$w*3n3b3m_
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
-ALLOWED_HOSTS = [
+'''ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'alextremo-life.onrender.com',
-]
+]'''
+
+ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 
@@ -133,9 +136,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
+'''STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'staticfiles/frontend'),
-]
+]'''
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
