@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-4">
         <div className="mb-8">
             <div className="flex justify-center items-center mb-6">
-              <img src="/logo y nombre.png" alt="Alex Logo" className="w-[50px] md:w-[450px] h-auto" />
+              <img src="./assets/logo-y-nombre.png" alt="Alex-Logo" className="w-[50px] md:w-[450px] h-auto" />
             </div>
           {/* <p className="text-l md:text-1xl text-black mb-8 leading-relaxed">
             Specializing in stylized visuals, character design, and storytelling
