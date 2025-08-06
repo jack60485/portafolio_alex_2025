@@ -6,21 +6,20 @@ npm install
 npm run build
 echo "✅ Frontend build complete"
 
-# 2. Copiar el build al backend/staticfiles/frontend
+# 2. Copiar build a staticfiles/frontend
 rm -rf backend/staticfiles/frontend
 mv dist backend/staticfiles/frontend
 
-# 🔁 Copiar también el index.html para asegurarse que Django lo encuentre
+# 3. Copiar index.html a carpeta de templates para que Django pueda encontrarlo
 mkdir -p backend/templates
 cp backend/staticfiles/frontend/index.html backend/templates/index.html
 
-# 3. Instalar dependencias del backend
+# 4. Instalar dependencias de backend
 echo "🐍 Installing backend Python dependencies..."
 pip install -r backend/requirements.txt
 
-# 4. Recolectar archivos estáticos de Django
+# 5. Recolectar archivos estáticos
 echo "📁 Collecting static files with Django..."
 python backend/manage.py collectstatic --noinput
 
 echo "🚀 Build script completed successfully!"
-
