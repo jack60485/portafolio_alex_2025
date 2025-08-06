@@ -4,10 +4,10 @@ services:
     env: python
     plan: free
     buildCommand: "./build.sh"
-    startCommand: "gunicorn portfolio_backend.wsgi:application"
+    startCommand: "gunicorn backend.portfolio_backend.wsgi:application"
     rootDir: backend
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: portfolio_backend.settings
+        value: backend.portfolio_backend.settings
       - key: PYTHON_VERSION
         value: 3.12.1
