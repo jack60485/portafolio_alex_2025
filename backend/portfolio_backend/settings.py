@@ -78,7 +78,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         ##'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'frontend')],##FUNCIONA PARA LOCAL
-        'DIRS': [os.path.join(BASE_DIR, 'staticfiles_build/frontend')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

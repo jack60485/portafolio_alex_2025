@@ -46,7 +46,7 @@ urlpatterns = [
         'document_root': os.path.join(settings.BASE_DIR, 'staticfiles/frontend/assets')
 
     }),
-    path('', TemplateView.as_view(template_name="frontend/index.html")),
+    path('', TemplateView.as_view(template_name="index.html")),
 ]
 # Solo agrega media si DEBUG está activado
 if settings.DEBUG:
