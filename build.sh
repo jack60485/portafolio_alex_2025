@@ -1,16 +1,16 @@
-#!/usr/bin/env bash
+# Asegúrate de estar en la raíz del proyecto
 
-# 1. Build del frontend con Vite (desde raíz)
+# 1. Construir frontend
 echo "🔧 Building frontend with Vite..."
 npm install
 npm run build
 echo "✅ Frontend build complete"
 
-# 2. Copiar build a staticfiles/frontend
+# 2. Mover dist/ a staticfiles/frontend
 rm -rf backend/staticfiles/frontend
 mv dist backend/staticfiles/frontend
 
-# 3. Copiar index.html a carpeta de templates para que Django pueda encontrarlo
+# 3. Copiar index.html a templates (¡esta parte es clave!)
 mkdir -p backend/templates
 cp backend/staticfiles/frontend/index.html backend/templates/index.html
 
