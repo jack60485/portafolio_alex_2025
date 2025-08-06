@@ -77,8 +77,8 @@ ROOT_URLCONF = 'portfolio_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'frontend')],##FUNCIONA PARA LOCAL
-        ##'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        ##'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'frontend', 'templates',)],##FUNCIONA PARA LOCAL
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
