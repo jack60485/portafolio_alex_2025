@@ -1,24 +1,24 @@
-# Asegúrate de estar en la raíz del proyecto
+#!/usr/bin/env bash
 
-# 1. Construir frontend
 echo "🔧 Building frontend with Vite..."
 npm install
 npm run build
 echo "✅ Frontend build complete"
 
-# 2. Mover dist/ a staticfiles/frontend
-rm -rf backend/staticfiles/frontend
-mv dist backend/staticfiles/frontend
+# 1️⃣ Mover build de Vite a staticfiles_build/frontend
+rm -rf backend/staticfiles_build/frontend
+mkdir -p backend/staticfiles_build/frontend
+mv dist/* backend/staticfiles_build/frontend/
 
-# 3. Copiar index.html a templates (¡esta parte es clave!)
+# 2️⃣ Copiar index.html a templates para que Django lo renderice
 mkdir -p backend/templates
-cp backend/staticfiles/frontend/index.html backend/templates/index.html
+cp backend/staticfiles_build/frontend/index.html backend/templates/index.html
 
-# 4. Instalar dependencias de backend
+# 3️⃣ Instalar dependencias Python
 echo "🐍 Installing backend Python dependencies..."
 pip install -r backend/requirements.txt
 
-# 5. Recolectar archivos estáticos
+# 4️⃣ Recolectar archivos estáticos
 echo "📁 Collecting static files with Django..."
 python backend/manage.py collectstatic --noinput
 
