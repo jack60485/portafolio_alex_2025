@@ -3,9 +3,8 @@ services:
     name: portafolio-alex
     env: python
     plan: free
-    buildCommand: "./build.sh"
-    startCommand: "gunicorn backend.portfolio_backend.wsgi:application"
-    rootDir: backend
+    buildCommand: ./build.sh
+    startCommand: gunicorn backend.portfolio_backend.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: backend.portfolio_backend.settings
