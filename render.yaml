@@ -3,7 +3,7 @@ services:
     name: portafolio_alex_2025
     env: python
     buildCommand: ./build.sh
-    startCommand: cd backend && gunicorn portfolio_backend.wsgi:application
+    startCommand: gunicorn portfolio_backend.wsgi:application --chdir backend
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: backend.portfolio_backend.settings
