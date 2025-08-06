@@ -28,12 +28,10 @@ def health_check(request):
     return HttpResponse("OK")
 
 urlpatterns = [
-    path('api/', include('projects.urls')),
     path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name="index.html")),
-
+    path('api/', include('projects.urls')),  # si tienes este archivo
+    path('', TemplateView.as_view(template_name='index.html'), name='home'),
 ]
-
 # Solo agrega media si DEBUG está activado
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
