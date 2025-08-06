@@ -1,10 +1,9 @@
 services:
   - type: web
-    name: portfolio-alex
+    name: portfolio-alex-test
     env: python
     buildCommand: ./build.sh
-    startCommand: gunicorn backend.portfolio_backend.wsgi:application
-
+    startCommand: gunicorn portfolio_backend.wsgi:application
     workingDir: backend
     envVars:
       - key: DJANGO_SETTINGS_MODULE
