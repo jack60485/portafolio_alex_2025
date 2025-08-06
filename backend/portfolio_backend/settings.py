@@ -37,7 +37,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ]
 
 ALLOWED_HOSTS = ['*']''' ##fucniona con local
-ALLOWED_HOSTS = ["0.0.0.0", "localhost", "render.com", "portfolio-alex-c35u.onrender.com"]
+ALLOWED_HOSTS = ['*', "0.0.0.0", "localhost", "render.com", "portfolio-alex-c35u.onrender.com"]
 
 
 # Application definition
@@ -77,8 +77,8 @@ ROOT_URLCONF = 'portfolio_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        ##'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'frontend')],##FUNCIONA PARA LOCAL
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'frontend')],##FUNCIONA PARA LOCAL
+        ##'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,8 +144,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 
 
 STATICFILES_DIRS = [
-    ##os.path.join(BASE_DIR, 'staticfiles'),##FUNCIONA PARA LOCAL
-    os.path.join(BASE_DIR, "staticfiles/frontend/assets"),
+    os.path.join(BASE_DIR, 'staticfiles', 'staticfiles/frontend/assets'),##FUNCIONA PARA LOCAL
+    ##os.path.join(BASE_DIR, "staticfiles/frontend/assets"),
 ]
 
 # Default primary key field type
