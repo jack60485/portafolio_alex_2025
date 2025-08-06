@@ -36,8 +36,9 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
     'alextremo-life.onrender.com',
 ]
 
-ALLOWED_HOSTS = ['*']'''
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
+ALLOWED_HOSTS = ['*']''' ##fucniona con local
+ALLOWED_HOSTS = ["0.0.0.0", "localhost", "render.com", "portfolio-alex-c35u.onrender.com"]
+
 
 # Application definition
 
