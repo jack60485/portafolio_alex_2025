@@ -37,8 +37,8 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 ]
 
 ALLOWED_HOSTS = ['*']'''
-
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -76,7 +76,8 @@ ROOT_URLCONF = 'portfolio_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'frontend')],
+        ##'DIRS': [os.path.join(BASE_DIR, 'staticfiles', 'frontend')],##FUNCIONA PARA LOCAL
+        'DIRS': [os.path.join(BASE_DIR, 'staticfiles_build/frontend')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,14 +143,15 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles'),
+    ##os.path.join(BASE_DIR, 'staticfiles'),##FUNCIONA PARA LOCAL
+    os.path.join(BASE_DIR, "staticfiles/frontend/assets"),
 ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-import os
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 MEDIA_URL = '/media/'
@@ -159,3 +161,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if not DEBUG:
     import logging
     logging.basicConfig(level=logging.DEBUG)
+
+import logging
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler()
+handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
+
+logger.addHandler(handler)
+
+logger.debug(f"Allowed hosts: {ALLOWED_HOSTS}")

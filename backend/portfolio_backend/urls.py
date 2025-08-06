@@ -41,10 +41,12 @@ class SafeTemplateView(TemplateView):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('projects.urls')),  # si tienes este archivo
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    ##path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('assets/<path:path>', static_serve, {
         'document_root': os.path.join(settings.BASE_DIR, 'staticfiles/frontend/assets')
+
     }),
+    path('', TemplateView.as_view(template_name="frontend/index.html")),
 ]
 # Solo agrega media si DEBUG está activado
 if settings.DEBUG:
