@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: portafolio-alex
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn portfolio_backend.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portfolio_backend.settings
+      - key: PYTHON_VERSION
+        value: 3.10
+    buildFilter:
+      paths:
+        - frontend/
+        - backend/
