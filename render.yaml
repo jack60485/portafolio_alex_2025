@@ -1,17 +1,27 @@
 services:
   - type: web
-    name: portafolio_alex_2025
+    name: portfolio-alex
     env: python
     buildCommand: ./build.sh
-    startCommand: gunicorn portfolio_backend.wsgi:application --chdir backend
+    startCommand: gunicorn portfolio_backend.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: backend.portfolio_backend.settings
+        value: portfolio_backend.settings
       - key: PYTHON_VERSION
         value: 3.12.1
+      - key: NODE_VERSION
+        value: 20.11.1
+      - key: DJANGO_SECRET_KEY
+        sync: false
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "0.0.0.0,localhost,render.com"
+
+    autoDeploy: true
+    plan: free
     buildFilter:
       paths:
-        - frontend/**
         - backend/**
+        - frontend/**
         - build.sh
-        - render.yaml
