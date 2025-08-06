@@ -6,7 +6,7 @@ npm install
 npm run build
 echo "✅ Frontend build complete"
 
-# 2. Mover build del frontend al lugar correcto
+# 2. Copiar el build al backend/staticfiles/frontend
 rm -rf backend/staticfiles/frontend
 mv dist backend/staticfiles/frontend
 
@@ -14,8 +14,9 @@ mv dist backend/staticfiles/frontend
 echo "🐍 Installing backend Python dependencies..."
 pip install -r backend/requirements.txt
 
-# 4. Recolectar archivos estáticos
+# 4. Recolectar archivos estáticos de Django
 echo "📁 Collecting static files with Django..."
 python backend/manage.py collectstatic --noinput
 
 echo "🚀 Build script completed successfully!"
+
