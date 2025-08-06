@@ -21,12 +21,22 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from django.http import HttpResponse
 from django.views.static import serve as static_serve
+from django.template.exceptions import TemplateDoesNotExist
+from django.views import View
 import os
 '''def home(request):
     return HttpResponse("Backend is running successfully!")'''
 
 def health_check(request):
     return HttpResponse("OK")
+
+class SafeTemplateView(TemplateView):
+    def get(self, request, *args, **kwargs):
+        try:
+            return super().get(request, *args, **kwargs)
+        except TemplateDoesNotExist:
+            return HttpResponse("Frontend build is missing", status=501)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
