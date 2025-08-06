@@ -34,11 +34,11 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
     'localhost',
     '127.0.0.1',
     'alextremo-life.onrender.com',
-]'''
+]
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']'''
 
-
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
 # Application definition
 
 INSTALLED_APPS = [
@@ -156,3 +156,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
+if not DEBUG:
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
