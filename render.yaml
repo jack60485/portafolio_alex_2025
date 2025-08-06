@@ -1,8 +1,7 @@
 services:
   - type: web
-    name: portafolio-alex
+    name: portafolio_alex_2025
     env: python
-    plan: free
     buildCommand: ./build.sh
     startCommand: gunicorn backend.portfolio_backend.wsgi:application
     envVars:
@@ -10,3 +9,9 @@ services:
         value: backend.portfolio_backend.settings
       - key: PYTHON_VERSION
         value: 3.12.1
+    buildFilter:
+      paths:
+        - frontend/**
+        - backend/**
+        - build.sh
+        - render.yaml
