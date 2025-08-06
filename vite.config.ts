@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from 'path';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   base: './',
   plugins: [react()],
@@ -10,9 +10,12 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      // Esto redirige las llamadas a /api al backend de Django
       '/api': 'http://localhost:8000',
-      '/media': 'http://localhost:8000', // para servir imágenes y archivos
+      '/media': 'http://localhost:8000',
     },
+  },
+  build: {
+    outDir: path.resolve(__dirname, 'backend/staticfiles/frontend'),
+    emptyOutDir: true,
   },
 });
