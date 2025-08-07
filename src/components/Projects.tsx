@@ -9,13 +9,26 @@ const Projects = () => {
 
 
   const [projects, setProjects] = useState([]);
+    useEffect(() => {
+      const BASE_URL =
+        import.meta.env.MODE === "development"
+          ? "http://localhost:8000/api"
+          : "/api";
+
+      axios.get(`${BASE_URL}/projects/`)
+        .then((response) => setProjects(response.data))
+        .catch((error) => console.error("Error fetching projects:", error));
+    }, []);
 
 
-  useEffect(() => {
+
+ {/* useEffect(() => {
     axios.get('http://localhost:8000/api/projects/')
       .then(response => setProjects(response.data))
       .catch(error => console.error('Error fetching projects:', error));
-  }, []);
+  }, []);*/}
+
+
 
 
   const allCategories = [
