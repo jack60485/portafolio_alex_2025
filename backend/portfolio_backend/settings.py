@@ -144,7 +144,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles', 'staticfiles/frontend/assets'),##FUNCIONA PARA LOCAL
+    os.path.join(BASE_DIR, 'staticfiles_build', 'frontend'),
+    ##os.path.join(BASE_DIR, 'staticfiles', 'staticfiles/frontend/assets'),##FUNCIONA PARA LOCAL
     ##os.path.join(BASE_DIR, "staticfiles/frontend/assets"),
 ]
 
@@ -154,7 +155,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -174,3 +174,4 @@ handler.setFormatter(logging.Formatter('%(asctime)s %(levelname)s %(message)s'))
 logger.addHandler(handler)
 
 logger.debug(f"Allowed hosts: {ALLOWED_HOSTS}")
+

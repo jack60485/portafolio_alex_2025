@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
-  base: './',
+  base: './', // igual que tus rutas actuales
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
@@ -15,7 +15,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(__dirname, 'backend/staticfiles/frontend'),
+    outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
   },
 });

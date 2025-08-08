@@ -23,6 +23,7 @@ from django.http import HttpResponse
 from django.views.static import serve as static_serve
 from django.template.exceptions import TemplateDoesNotExist
 from django.views import View
+
 import os
 '''def home(request):
     return HttpResponse("Backend is running successfully!")'''
@@ -43,13 +44,14 @@ urlpatterns = [
     path('api/', include('projects.urls')),  # si tienes este archivo
     ##path('', TemplateView.as_view(template_name='index.html'), name='home'),
     path('assets/<path:path>', static_serve, {
-        'document_root': os.path.join(settings.BASE_DIR, 'staticfiles/frontend/assets')
-
+        'document_root': os.path.join(settings.BASE_DIR, 'staticfiles_build/frontend/assets')
     }),
+
     path("", TemplateView.as_view(template_name="index.html")),
 ]
 # Solo agrega media si DEBUG está activado
 if settings.DEBUG:
+
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
 
