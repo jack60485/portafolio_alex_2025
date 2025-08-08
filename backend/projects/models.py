@@ -36,7 +36,12 @@ class Project(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     detailed_description = RichTextField(blank=True)
     extra_text = models.TextField(blank=True, null=True)
+    order = models.PositiveIntegerField(default=1000, db_index=True)
+    class Meta:
+        ordering = ["order", "-created_at"]  # primero tu orden, luego reciente primero
 
+    def __str__(self):
+        return self.title
     # ❌ ELIMINADO: extra_images = models.ManyToManyField(...)
     # Django ya puede acceder a todas las imágenes extra usando el reverse access `project.extra_images.all()`
 
@@ -56,13 +61,26 @@ class ProjectImage(models.Model):
 
 class ProjectVideo(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='videos')
+    file = models.FileField(upload_to='project_videos/', blank=True, null=True)  # opcional
     video_url = models.URLField(blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
         ordering = ['order']
 
-from django.db import models
+    @property
+    def url(self) -> str:
+        """URL para consumir en el front: archivo si hay; si no, la video_url; si no, cadena vacía."""
+        if self.file:
+            try:
+                return self.file.url
+            except ValueError:
+                return ""
+        return self.video_url or ""
+
+    def __str__(self):
+        origen = "archivo" if self.file else ("url" if self.video_url else "vacío")
+        return f"{self.project.title} – video ({origen}) #{self.pk}"
 
 class ProjectBlock(models.Model):
     BLOCK_TYPES = [

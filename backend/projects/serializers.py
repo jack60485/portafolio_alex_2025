@@ -7,6 +7,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class TagSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Tag
         fields = ['id', 'name']
@@ -18,9 +19,13 @@ class ProjectImageSerializer(serializers.ModelSerializer):
         fields = ['id', 'image', 'order']
 
 class ProjectVideoSerializer(serializers.ModelSerializer):
+    video = serializers.SerializerMethodField()  # ← campo unificado
     class Meta:
         model = ProjectVideo
-        fields = ['video_url']
+        fields = ['id', 'order', 'video', 'file', 'video_url']
+        read_only_fields = ['video']
+    def get_video(self, obj):
+        return obj.url  # usa @property del modelo
 
 class ProjectSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(many=True, read_only=True)

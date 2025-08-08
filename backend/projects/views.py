@@ -13,7 +13,7 @@ from django.views.generic import TemplateView
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
+    queryset = Project.objects.all().order_by("order", "-created_at")
     serializer_class = ProjectSerializer
 
 class ProjectBlockViewSet(viewsets.ModelViewSet):

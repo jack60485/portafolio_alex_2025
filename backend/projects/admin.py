@@ -15,12 +15,15 @@ class ProjectImageInline(admin.StackedInline):
 class ProjectVideoInline(admin.StackedInline):
     model = ProjectVideo
     extra = 1
-    fields = ['video_url', 'order']
+    fields = ['file', 'video_url', 'order']
     ordering = ['order']
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ("title", "get_categories", "get_tags", "created_at")
+    list_display = ("order", "title", "get_categories", "get_tags", "created_at")
+    list_display_links = ("title",)
+    list_editable = ("order",)
     search_fields = ("title", "description")
+    ordering = ("order", "-created_at")  # orden en el listado del admin también
     filter_horizontal = ("categories", "tags")  # Para elegir desde el costado más fácilmente
     inlines = [ProjectImageInline, ProjectVideoInline]  # Aquí los agregas dentro
 
